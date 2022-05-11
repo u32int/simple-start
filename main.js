@@ -49,6 +49,14 @@ var show_shortcut_trigger_in_name = false
 // default - 2
 var fade_in_animation_length = 2;
 
+// Round the corners, a good value to start with would probably be around 20px.
+// Disabled by default (0px).
+var round_corners = "20px";
+
+// By default, this is set to false which means only the outer/left
+// side of the image is rounded. 
+var round_all_img_corners = false;
+
 // -- Themes --
 const themes = {
     "default-blue": {
@@ -87,7 +95,7 @@ const themes = {
 }
 
 // current selected theme
-theme = themes["solarized-light"];
+theme = themes["default-blue"];
 
 
 // -- END configuration --
@@ -240,6 +248,13 @@ function load_theme() {
 
     let ths = document.getElementById("links").getElementsByTagName("th");
     for (i = 0; i < ths.length; i++) ths[i].style.color = theme["primary"];
+
+    // rounded corners
+    center.style.borderRadius = round_corners;
+    img.style.borderRadius = round_all_img_corners ?
+	round_corners
+	:
+	round_corners + " 0px " + " 0px " + round_corners;
 }
 
 window.onload = function() {
