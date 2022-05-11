@@ -57,6 +57,9 @@ var round_corners = "20px";
 // side of the image is rounded. 
 var round_all_img_corners = false;
 
+// Toggle shadows. True by default.
+var show_shadow = true;
+
 // -- Themes --
 const themes = {
     "default-blue": {
@@ -235,7 +238,8 @@ function load_theme() {
     let imgpath = "imgs/" + theme["center-img"];
     img.setAttribute("src", imgpath);
     // colors
-    center.style.boxShadow = "7px 9px 1px 1px " + theme["shadow"];
+    // toggle shadows
+    if (show_shadow) center.style.boxShadow = "7px 9px 1px 1px " + theme["shadow"];
     document.body.style.backgroundColor = theme["background"];
     center.style.backgroundColor = theme["center-background"];
     // the thead
